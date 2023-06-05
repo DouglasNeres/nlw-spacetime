@@ -47,7 +47,7 @@ export default function App() {
     discovery,
   )
 
-  async function handlwGithubOAuthCode(code: string) {
+  async function handleGithubOAuthCode(code: string) {
     const response = await api.post('/register', {
       code,
     })
@@ -69,7 +69,7 @@ export default function App() {
     if (response?.type === 'success') {
       const { code } = response.params
 
-      handlwGithubOAuthCode(code)
+      handleGithubOAuthCode(code)
     }
   }, [response])
 
