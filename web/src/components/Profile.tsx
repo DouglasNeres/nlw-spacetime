@@ -1,18 +1,24 @@
-import { User } from 'lucide-react'
+import { getUser } from '@/lib/auth'
+import Image from 'next/image'
 
 export function Profile() {
-  return (
-    <a
-      href=""
-      className="flex items-center gap-3 text-left transition-colors hover:text-gray-50"
-    >
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400">
-        <User className="h-5 w-5 text-gray-500" />
-      </div>
+  const { name, avatarUrl } = getUser()
 
-      <p className="max-w-[140px] text-sm leading-snug">
-        <span className="underline">Crie sua conta</span> e salve suas memórias!
+  return (
+    <div className="flex items-center gap-3 text-left">
+      <Image
+        src={avatarUrl}
+        width={40}
+        height={40}
+        alt=""
+        className="h-10 w-10 rounded-full"
+      />
+      <p className="max-w-[150px] text-sm leading-snug">
+        {name}
+        <a href="" className="block text-red-400 hover:text-red-300">
+          Quero sair
+        </a>
       </p>
-    </a>
+    </div>
   )
 }
